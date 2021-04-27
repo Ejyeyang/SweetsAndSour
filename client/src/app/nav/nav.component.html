@@ -1,28 +1,32 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
   <div class="container">
-    <a class="navbar-brand" href="#">Sweets and Sour</a>
+    <a class="navbar-brand" href="#"><span class="fa fa-heart"></span> Sweets and Sour</a>
     <ul
       class="navbar-nav me-auto mb-2 mb-md-0"
       *ngIf="accountService.currentUser$ | async"
     >
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/members"
-          >Matches</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/lists"
-          >Lists</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/messages"
-          >Messages</a
-        >
-      </li>
+      <ng-container>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/members"
+            >Matches</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/lists"
+            >Lists</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/messages"
+            >Messages</a
+          >
+        </li>
+      </ng-container>
     </ul>
-    <div class="dropdown" dropdown *ngIf="accountService.currentUser$ | async">
-      <a class="dropdown-toggle text-light" dropdownToggle>Welcome user</a>
+    <div class="dropdown" dropdown *ngIf="(accountService.currentUser$ | async) as user">
+      <a class="dropdown-toggle text-light" dropdownToggle
+        >Welcome {{user.username | titlecase}} <span class="fa fa-user"></span
+      ></a>
       <div class="dropdown-menu mt-3" *dropdownMenu>
         <a class="dropdown-item">Edit Profile</a>
         <div class="dropdown-divider"></div>

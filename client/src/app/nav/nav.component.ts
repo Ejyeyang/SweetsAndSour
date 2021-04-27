@@ -37,6 +37,7 @@ export class NavComponent implements OnInit {
 
   logout(){
     this.accountService.logout();
+    this.toastr.info('Logged out')
     this.router.navigateByUrl('/');
   }
 
