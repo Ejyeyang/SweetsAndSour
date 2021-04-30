@@ -1,0 +1,31 @@
+<div class="card mb-4">
+  <div class="card-image-wrapper">
+    <img src="{{member.photoUrl}}" alt="{{member.knownAs}}" class="card-img-top">
+  </div>
+  <div class="card-body p-1">
+    <h6 class="card-title text-center mb-1">
+      <i class="fa fa-user mr-2"></i>
+      {{member.knownAs}}
+    </h6>
+    <p class="card-text text-muted text-center">{{member.city}}</p>
+  </div>
+</div>
+
+<style>
+  .card:hover img{
+    transform: scale(1.2, 1.2);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.7;
+  }
+
+  .card img{
+    transform: scale(1.0, 1.0);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+  }
+
+  .card-image-wrapper{
+    overflow: hidden;
+  }
+</style>
