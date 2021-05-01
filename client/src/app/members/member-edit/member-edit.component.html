@@ -1,1 +1,116 @@
-<h1 *ngIf="member">{{member.username}}</h1>
+<h1 *ngIf="member">{{ member.username }}</h1>
+<div class="col-4"></div>
+<div class="col-8">
+  <div class="alert alert-info">
+    <p>
+      <strong>Information:</strong> You have made changes. Any unsaved changes
+      will be lost.
+    </p>
+  </div>
+</div>
+
+<div class="row" *ngIf="member">
+  <div class="col-4">
+    <div class="card">
+      <img
+        class="card-img-top img-thumbnail"
+        src="{{ member.photoUrl || './assets/user.png' }}"
+        alt="{{ member.knownAs }}"
+      />
+      <div class="card-body">
+        <div>
+          <strong>Location:</strong>
+          <p>{{ member.city }}, {{ member.country }}</p>
+        </div>
+        <div>
+          <strong>Age:</strong>
+          <p>{{ member.age }}</p>
+        </div>
+        <div>
+          <strong>Last Active:</strong>
+          <p>{{ member.lastActive | date }}</p>
+        </div>
+        <div>
+          <strong>Member since:</strong>
+          <p>{{ member.created | date }}</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success btn-block">Save Changes</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <tabset class="member-tabset">
+      <tab heading="About {{ member.knownAs }}">
+
+        <form>
+          <h4>Description</h4>
+          <textarea class="form-control" [(ngModel)]="member.introduction" name="intoduction" rows="6"></textarea>
+          <h4 class="mt-2">Looking for</h4>
+          <textarea class="form-control" [(ngModel)]="member.lookingFor" name="lookingFor" rows="6"></textarea>
+          <h4 class="mt-2">Interests</h4>
+          <textarea class="form-control" [(ngModel)]="member.interests" name="interests" rows="6"></textarea>
+          <h4 class="mt-2">Location Details:</h4>
+          <div class="form-inline">
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i>@</i>
+                  </div>
+                </div>
+                <input
+                [(ngModel)]="member.city"
+                  type="text"
+                  name="city"
+                  class="form-control"
+                  placeholder="City"
+                />
+              </div>
+            </div>
+
+            <div class="form-group mx-2">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i>@</i>
+                  </div>
+                </div>
+                <input
+                [(ngModel)]="member.country"
+                  type="text"
+                  name="country"
+                  class="form-control"
+                  placeholder="Country"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </tab>
+      <tab heading="Edit Photos">
+        <p>Photo Edit will go here.</p>
+      </tab>
+    </tabset>
+  </div>
+</div>
+
+<style>
+  .img-thumbnail {
+    margin: 25px;
+    width: 85%;
+    height: 85%;
+  }
+
+  .card-body {
+    padding: 0 25px;
+  }
+
+  .card-footer {
+    padding: 10px 15px;
+    background-color: #fff;
+    border-top: none;
+  }
+</style>
