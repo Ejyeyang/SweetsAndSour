@@ -32,6 +32,7 @@
       dropdown
       *ngIf="accountService.currentUser$ | async as user"
     >
+      <img src="{{user.photoUrl}}" alt="{{user.username}}" class="mr-2">
       <a class="dropdown-toggle text-light" dropdownToggle
         >Welcome {{ user.username | titlecase }} <span class="fa fa-user"></span
       ></a>
@@ -72,5 +73,11 @@
   .dropdown-toggle,
   .dropdown-item {
     cursor: pointer;
+  }
+
+  img{
+    max-height: 50px;
+    border: 2px solid #fff;
+    display: inline;
   }
 </style>
